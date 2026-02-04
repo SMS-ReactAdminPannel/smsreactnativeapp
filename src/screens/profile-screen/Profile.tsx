@@ -326,12 +326,6 @@ type MakeType = {
 
 };
 
-type ModelType = {
-  Make_ID: number;
-  Make_Name: string;
-  Model_ID: number;
-  Model_Name: string;
-};
 
 
 const Profile = () => {
@@ -377,20 +371,16 @@ const Profile = () => {
     submitting: false
   });
 
-  const [makes, setMakes] = useState<MakeType[]>([]);
   const [models, setModels] = useState<any[]>([]);
   const [years, setYears] = useState<number[]>([]);
-  const [fuelTypes, setFuelTypes] = useState<any[]>([]);
 
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedFuelType, setSelectedFuelType] = useState('');
   const [addVehicleModal, setAddVehicleModal] = useState(false);
 
-  const [companyOpen, setCompanyOpen] = useState(false);
   const [selectedMake, setSelectedMake] = useState<string | null>(null);
   const [companyItems, setCompanyItems] = useState<DropdownItem[]>([]);
-  const [addVehicleModal, setAddVehicleModal] = useState(false);
 
   const loadMakes = useCallback(async () => {
     try {
