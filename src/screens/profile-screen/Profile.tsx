@@ -366,9 +366,9 @@ const Profile = () => {
   const [originalFormData, setOriginalFormData] = useState<any>(null);
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState({
-    makes: false,
-    models: false,
-    submitting: false
+    makes: true,
+    models: true,
+    submitting: true
   });
 
   const [models, setModels] = useState<any[]>([]);
@@ -1020,10 +1020,10 @@ const Profile = () => {
         isValid = false;
       }
 
-      if (!newVehicle.fuleType?.trim()) {
-        vehicleErrors.fuleType = 'Fuel type is required';
-        isValid = false;
-      }
+      // if (!newVehicle.fuleType?.trim()) {
+      //   vehicleErrors.fuleType = 'Fuel type is required';
+      //   isValid = false;
+      // }
 
       if (Object.keys(vehicleErrors).length > 0) {
         errors.newVehicle = vehicleErrors;
@@ -1114,17 +1114,9 @@ const Profile = () => {
     try {
       const newVehicle = formData.newVehicle;
 
-      const vehicleData = {
-        registerNumber: newVehicle.registerNumber,
-        model: newVehicle.model,
-        company: newVehicle.company,
-        fuleType: newVehicle.fuleType,
-        year: newVehicle.year,
-      };
-
       const response: any = await updateUserProfileDetails({
         ...formData,
-        vehicleInfo: [...(formData.vehicleInfo || []), vehicleData],
+        vehicleInfo: [...(formData.vehicleInfo || []), newVehicle],
       });
 
       if (response) {

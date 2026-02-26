@@ -2450,7 +2450,3 @@ const styles = StyleSheet.create({
 });
 
 export default Services;
-
-function clearVehicleError(index: any, arg1: string) {
-  throw new Error('Function not implemented.');
-}
